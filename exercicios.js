@@ -52,3 +52,35 @@ tabuada(b);
 
 //ex12
 console.log("------------------ex12------------------");
+
+const carrinho = [];
+
+function cadastrarProduto() {
+    let contador = 1;
+    
+    while (carrinho.length < 5) {
+        const produto = {
+            nome: prompt(`Digite o nome do ${contador}º produto:`),
+            preco: parseFloat(prompt(`Digite o preço do ${contador}º produto:`))
+        };
+        
+        carrinho.push(produto);
+        contador++;
+    }
+}
+
+function exibirCarrinho() {
+    let listaProdutos = "Itens do Carrinho:\n\n";
+    let total = 0;
+    
+    carrinho.forEach((produto, index) => {
+        listaProdutos += `${index + 1}. ${produto.nome} - R$ ${produto.preco.toFixed(2)}\n`;
+        total += produto.preco;
+    });
+    
+    listaProdutos += `\nTotal a Pagar: R$ ${total.toFixed(2)}`;
+    alert(listaProdutos);
+}
+
+cadastrarProduto();
+exibirCarrinho();
